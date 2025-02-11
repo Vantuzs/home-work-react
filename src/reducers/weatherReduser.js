@@ -19,6 +19,37 @@ function weatherReduser(state,action){
                 error
             }
         }
+        case ACTIONS.WEATHER_LOADS:{
+            const {obj} = action
+
+            return {
+                ...state,
+                obj
+            }
+        }
+        case ACTIONS.CITY_NAME_CHANGE:{
+            const {cityName} = action
+
+            return {
+                ...state,
+                city: cityName
+            }
+        }
+        case ACTIONS.GRADUS_CHANGE:{
+            const {gradus}= action
+            return{
+                ...state,
+                gradus
+            }
+        }
+        case ACTIONS.SPEED_CHANGE:{
+            const {speed}=action
+
+            return{
+                ...state,
+                gradus:speed
+            }
+        }
         default: return state
     }
 }

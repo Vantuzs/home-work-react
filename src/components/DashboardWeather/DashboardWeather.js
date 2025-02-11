@@ -2,44 +2,66 @@ import React,{ useEffect, useReducer} from 'react';
 import OutputWindowWeather from '../OutputWindowWeather/OutputWindowWeather';
 import WeatherParameters from '../WeatherParameters/WeatherParameters';
 import styles from './DeshboardWeather.module.scss'
-import ApiWeather from '../../api/apiWeather';
 import weatherReduser from '../../reducers/weatherReduser';
-import CONSTANTS from '../../constants/weatherConstants'
-// const {apishka,changeCityFromApi,changeValueTempFromAPi} = ApiWeather
+import CONSTANTS,{INITIALSTATE} from '../../constants/weatherConstants'
+import { fetchWeather } from '../../api/apiWeather';
 const {ACTIONS} = CONSTANTS
-// const {apishka,changeCityFromApi,changeValueTempFromAPi} = ApiWeather
 
 
-const INITIALSTATE = {
-    error: null,
-    isLoading: true
-}
 
 const DashboardWeather = () => {
     const [state,dispatch] = useReducer(weatherReduser,INITIALSTATE)
+    const {city,gradus} = state
 
-    useEffect(()=>{
-        ApiWeather()
-        .then(obj=>{
-            console.log(obj)
-            dispatch({
-                type: ACTIONS.TEST,
-                payloader: obj
-            })
+    const loadWeather = ()=>{
+      fetchWeather(city,gradus)
+      .then(obj=>{
+        dispatch({
+          type: ACTIONS.WEATHER_LOADS,
+          obj
         })
-        .catch(error=>{
-            dispatch({
-                type: ACTIONS.API_ERROR,
-                payloader: error
-            })
+      })
+      .catch(error=>{
+        dispatch({
+          type: ACTIONS.API_ERROR,
+          payloader: error
         })
-    },[])
-    console.log(state);
+      })
+    }
+    
+      useEffect(() => {
+        loadWeather();
+      }, [city,gradus]);
+
+
+    const cityNameChangeHandler = (cityName)=>{
+      dispatch({
+        type: ACTIONS.CITY_NAME_CHANGE,
+        cityName
+      })
+    }
+
+    const gradusChangeHandler = (gradus)=>{
+      dispatch({
+        type: ACTIONS.GRADUS_CHANGE,
+        gradus
+      })
+    }
+
+    const speedChangeHandler = (speed)=>{
+      dispatch({
+        type: ACTIONS.SPEED_CHANGE,
+        speed
+      })
+    }
 
     return (
         <main className={styles.container}>
-          <WeatherParameters />
-          <OutputWindowWeather/>     
+          <WeatherParameters cityNameChangeHandler={cityNameChangeHandler}
+           gradusChangeHandler={gradusChangeHandler}
+           speedChangeHandler={speedChangeHandler}
+           />
+          <OutputWindowWeather state={state}/>     
         </main>
     );
 }

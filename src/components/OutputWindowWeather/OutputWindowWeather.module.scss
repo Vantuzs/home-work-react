@@ -4,4 +4,20 @@
     height: 430px;
     border: 1px solid tan;
     border-radius: 5px;
+
+    h3{
+        border: 1px solid black;
+        display: flex;
+        justify-content: center;
+        border-radius: 3px;
+        padding: 5px;
+        margin: 20px 5px;
+    }
+
+    p{
+        border: 1px solid black;
+        border-radius: 3px;
+        padding: 2px 4px;
+        margin: 10px 5px;
+    }
 }
