@@ -3,7 +3,7 @@ import Todoshka from "./pages/Todoshka/Todoshka";
 
 function App() {
   return (
-    <CurrentWeater/>
+    <Todoshka/>
   );
 }
 

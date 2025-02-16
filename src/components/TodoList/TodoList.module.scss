@@ -1,0 +1,23 @@
+.container{
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color:chocolate;
+    width: 700px;
+    height: 400px;
+
+    article{
+        display: flex;
+        padding: 5px;
+        border: 1px solid black;
+        border-radius: 5px;
+        margin: 10px 5px;
+        transition: box-shadow 0.4s,background-color 0.85s ease, padding 0.5s ease, margin 0.5s ease;
+        &:hover{
+            background-color: rgb(139, 92, 92);
+            box-shadow: 0 0 10px;
+            padding: 10px 10px;
+            margin: 10px 10px;
+        }
+    }
+}
+
