@@ -3,7 +3,7 @@ import styles from './TodoList.module.scss'
 
 const TodoList = (props) => {
     const [checkboxInp,setCheckboxInp] = useState(false)
-    const {stateDashboard:{daily}} = props
+    const {stateDashboard:{daily},deleteMessage} = props
     const messageDailyArray = daily.map(currentDaily=>{
         const {body,id} = currentDaily
 
@@ -11,10 +11,17 @@ const TodoList = (props) => {
             setCheckboxInp(!checkboxInp)
         }
 
+        const buttoClickHandler = ({target: {id}})=>{
+            deleteMessage(Number(id))
+            console.dir(id);
+
+        }
+
         return(
-            <article id={id}>
+            <article id={id} key={id}>
             <input type='checkbox' onChange={checkboxChangeHandler}/>
             <div >{body}</div>
+            <button onClick={buttoClickHandler} id={id}>Delete</button>
             </article>
         )
     })
@@ -27,4 +34,4 @@ const TodoList = (props) => {
 }
 
 export default TodoList;
-//dsa
+//dsas

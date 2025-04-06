@@ -10,7 +10,7 @@ const {ACTIONS} = CONSTANTS
 
 
 const DashboardWeather = () => {
-    const [state,dispatch] = useReducer(weatherReduser,INITIALSTATE)//dsa
+    const [state,dispatch] = useReducer(weatherReduser,INITIALSTATE)//dsaы
     const {city,gradus} = state
 
     const loadWeather = ()=>{

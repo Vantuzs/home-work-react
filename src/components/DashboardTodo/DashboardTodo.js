@@ -10,15 +10,22 @@ const DashboardTodo = () => {
     const [state,dispatch] = useReducer(todoReduser,INITIALSTATETODO)
     const inputChangeHandler = (target)=>{
         dispatch({
-            type: ACTIONS.CHANGE_INPUT,//dsa
+            type: ACTIONS.CHANGE_INPUT,//dsaы
             target
+        })
+    }
+
+    const deleteMessage = (idMessage)=>{
+        dispatch({
+            type: ACTIONS.DELETE_TASK,
+            payload:idMessage
         })
     }
     
 
     return (
         <main className={styles.container}>
-       <TodoList stateDashboard={state}/>
+       <TodoList stateDashboard={state} deleteMessage={deleteMessage}/>
        <TodoArea stateDashboard={state} inputChangeHandler={inputChangeHandler}/>
         </main>
     );

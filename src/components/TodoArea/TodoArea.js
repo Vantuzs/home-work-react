@@ -7,13 +7,20 @@ const TodoArea = (props) => {
     console.log(props);
 
     const submitHandler = (event)=>{
+        const {target: {firstElementChild: {value}}} = event
         event.preventDefault()
-        inputChangeHandler(inputValue)
+        const trimValue = value.trim()
+        if(trimValue===''){
+            return
+        } else{
+            inputChangeHandler(trimValue)
+            setInputValue('')
+        }
     }
 
     // const Test = (event)=>{
     //     event.preventDefault()
-    //     inputChangeHandler(inputValue) dsa
+    //     inputChangeHandler(inputValue) dsaы
     // }
     return (
         <section className={styles.container}>

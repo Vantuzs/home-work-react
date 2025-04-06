@@ -24,7 +24,12 @@ function todoReduser(state,action){
         case ACTIONS.CHANGE_INPUT:{
             const {target} = action
             const {daily} = state
-            const index = daily[daily.length-1].id
+            let index
+            if(daily.length<=0){
+                index = 0
+            } else{
+                index = daily[daily.length-1].id
+            }
             const newObject = {
                 body:target,
         id: index+1
@@ -37,8 +42,18 @@ function todoReduser(state,action){
                 
             }
         }
+        case ACTIONS.DELETE_TASK:{
+            const {payload:idMessage} = action
+
+            const filteredTasks = state.daily.filter((task)=> task.id != idMessage)
+
+            return{
+                ...state,
+                daily: filteredTasks
+            }
+        }
     }
 }
 
 export default todoReduser;
-//dsa
+//dsaы

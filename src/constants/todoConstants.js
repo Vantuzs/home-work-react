@@ -10,7 +10,8 @@ export default {
     ACTIONS:{
         CHANGE_INPUT: 'CHANGE_INPUT',
         DAILY_LOAD_SUCCESS: 'DAILY_LOAD_SUCCESS',
-        DAILY_LOAD_ERROR: 'DAILY_LOAD_ERROR'
+        DAILY_LOAD_ERROR: 'DAILY_LOAD_ERROR',
+        DELETE_TASK:'DELETE_TASK'
     }
 }
-//dsa
+//dsaы
