@@ -1,10 +1,9 @@
 import React from "react";
-import { INITIALSTATE } from "../../constants/weatherConstants";
 import { Formik,Form,Field, ErrorMessage } from 'formik';
 import styles from './RegisterFormComp.module.scss'
 import { REGISTER_SCHEMA } from "../../schema";
 import { ACTIONS } from "../../constants/userConstants";
-import cx from 'classnames'
+import FormikField from "../FormikField/FormikField";
 
 const INITIAL_VALUES = {
     firstName: '',
@@ -16,10 +15,6 @@ const INITIAL_VALUES = {
 
 const Register = ({dispatch}) =>{
     // const [state,dispatch] = useReducer(singUpReduser,INITIAL_STATE_SING_UP)
-
-    const className = cx({
-        
-    })
 
     const submitHandler = ({email,password,firstName,lastName},actions) =>{
         // event.preventDefault()
@@ -38,27 +33,21 @@ const Register = ({dispatch}) =>{
 
     return (
         <Formik initialValues={INITIAL_VALUES} onSubmit={submitHandler} validationSchema={REGISTER_SCHEMA}>
-            {(formikProps)=>{
-                // console.log(formikProps);
+            {({ errors, touched })=>{
                 return (
                     <div className={styles.divas}>
                     <Form className={styles.formStyle}> 
                         <h2>Register form</h2>
                         <span>First name</span>
-                        <Field name='firstName' placeholder='John' />
-                        <ErrorMessage name="firstName" component='p'/>
+                        <FormikField name='firstName' placeholder='John' errors={errors} touched={touched} />
                         <span>Last name</span>
-                        <Field name='lastName' placeholder='Doe'/>
-                        <ErrorMessage name="lastName" component='p'/>
+                        <FormikField name='lastName' placeholder='Doe' errors={errors} touched={touched} />
                         <span>Email</span>
-                        <Field name='email' placeholder='john.doe@gmail.com'/>
-                        <ErrorMessage name="email" component='p'/>
+                        <FormikField name='email' placeholder='john.doe@gmail.com' errors={errors} touched={touched} />
                         <span>Password</span>
-                        <Field name='password' placeholder='qwerty123Q!'/>
-                        <ErrorMessage name="password" component='p'/>
+                        <FormikField name='password' placeholder='qwerty123Q!' errors={errors} touched={touched} />
                         <span>Confirm password</span>
-                        <Field name='confirmPassword' placeholder='qwerty123Q!'/>
-                        <ErrorMessage name="confirmPassword" component='p'/>
+                        <FormikField name='confirmPassword' placeholder='qwerty123Q!' errors={errors} touched={touched} />
                         <button type="submit">SingUp</button>
                     </Form>
                     </div>

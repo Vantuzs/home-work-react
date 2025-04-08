@@ -1,0 +1,33 @@
+import React from 'react'
+import cx from 'classnames'
+import styles from './FormikField.module.scss'
+import { Field, ErrorMessage } from 'formik'
+import { useFormikContext } from 'formik'
+
+const FormikField = ({ name, placeholder }) => {
+  const {errors, touched} = useFormikContext();
+  const getClassnames = (errors, touched, name) => {
+    return cx({
+      // ключ:значение
+      // ключ - стилевой класс, который нужно подключить
+      // значение - при каком условии, должен подключаться этот стилевой класс
+      [styles['invalid-input']]: errors[name] && touched[name]
+    })
+  }
+  return (
+    <>
+      <Field
+        name={name}
+        placeholder={placeholder}
+        className={getClassnames(errors, touched, 'firstName')}
+      />
+      <ErrorMessage
+        name={name}
+        component='p'
+        className={styles['invalid-paragraph']}
+      />
+    </>
+  )
+}
+
+export default FormikField
