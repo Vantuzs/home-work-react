@@ -4,7 +4,9 @@
     align-items: center;
     margin: 3px;
     // top: 50px;
-    
+    h2{
+        margin-bottom: 20px;
+    }
     input{
         width: 450px;
         margin: 2px 0px;
@@ -13,14 +15,13 @@
 }
 
 .divas{
-    top: 120px;
+    // top: 120px;
     // position:absolute;
     width: 500px;
-    height: 1000px;
+    height: auto;
     border: 2px solid black;
     border-radius: 5px;
-    margin-left: 21vw;
-    // margin-top: 10vh;
-    
+    margin-left:auto;
+    margin-right: auto;
+    margin-top: 100px;
 }
-

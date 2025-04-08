@@ -1,8 +1,10 @@
-import React, {useReducer} from "react";
+import React from "react";
 import { INITIALSTATE } from "../../constants/weatherConstants";
 import { Formik,Form,Field, ErrorMessage } from 'formik';
-import styles from './LogInFormComp.module.scss'
+import styles from './RegisterFormComp.module.scss'
 import { REGISTER_SCHEMA } from "../../schema";
+import { ACTIONS } from "../../constants/userConstants";
+import cx from 'classnames'
 
 const INITIAL_VALUES = {
     firstName: '',
@@ -12,12 +14,25 @@ const INITIAL_VALUES = {
     confirmPassword: ''
 }
 
-const SingUp = () =>{
+const Register = ({dispatch}) =>{
     // const [state,dispatch] = useReducer(singUpReduser,INITIAL_STATE_SING_UP)
 
-    const submitHandler = (values,actions) =>{
+    const className = cx({
+        
+    })
+
+    const submitHandler = ({email,password,firstName,lastName},actions) =>{
         // event.preventDefault()
         console.log('SIGMA');
+        dispatch({
+            type: ACTIONS.REGISTER_USER,
+            payload: {
+                email,
+                password,
+                firstName,
+                lastName,
+            }
+        })
         actions.resetForm();
     }
 
@@ -28,6 +43,7 @@ const SingUp = () =>{
                 return (
                     <div className={styles.divas}>
                     <Form className={styles.formStyle}> 
+                        <h2>Register form</h2>
                         <span>First name</span>
                         <Field name='firstName' placeholder='John' />
                         <ErrorMessage name="firstName" component='p'/>
@@ -52,4 +68,4 @@ const SingUp = () =>{
     )
 }
 
-export default SingUp;
+export default Register;

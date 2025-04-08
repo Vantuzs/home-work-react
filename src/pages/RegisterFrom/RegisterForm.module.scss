@@ -1,0 +1,30 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.header{
+    display:flex;
+    height: 70px;
+    justify-content: center;
+    align-items: center;
+    position:fixed;
+    background-color: orchid;
+    width: 100vw;
+    // margin-bottom: 10px;
+    top: 0;
+
+    button{
+        width: 50px;
+        height: 25px;
+        top: 25px;
+        position: absolute;
+        left: 80vw;
+    }
+}
+
+.fixet{
+    position: fixed;
+
+}

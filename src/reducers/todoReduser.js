@@ -17,7 +17,7 @@ function todoReduser(state,action){
 
             return{
                 ...state,
-                errorж:false,
+                error:false,
                 isLoading: false
             }
         }
